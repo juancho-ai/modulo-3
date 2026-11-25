@@ -1,0 +1,44 @@
+<ActionBar class="action-bar">
+  <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+  <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left"></ActionItem>
+  <Label text="Configuración (Settings)"></Label>
+</ActionBar>
+
+<ScrollView (navigatedTo)="onNavigatedTo()">
+  <StackLayout class="settings-container">
+    <!-- Requisito 5: Lectura persistente del nombre de usuario desde ApplicationSettings -->
+    <StackLayout class="settings-card">
+      <Label text="Perfil de Usuario (ApplicationSettings)" class="card-heading"></Label>
+      <Label text="Nombre de usuario almacenado:" class="field-label"></Label>
+      <Label [text]="nombreUsuarioPersistente" class="usuario-valor"></Label>
+
+      <Button
+        text="Editar Nombre de Usuario"
+        (tap)="irAEditarUsuario()"
+        class="btn-editar-usuario"
+      ></Button>
+    </StackLayout>
+
+    <!-- Requisito 3: Configuración de la URL de Ngrok para el Service HTTP -->
+    <StackLayout class="settings-card">
+      <Label text="Conexión API Express (Ngrok URL)" class="card-heading"></Label>
+      <Label
+        text="Configura la URL pública generada por Ngrok para el endpoint /api/articulos:"
+        textWrap="true"
+        class="field-label"
+      ></Label>
+
+      <TextField
+        [(ngModel)]="urlNgrokConfigurada"
+        hint="https://xxxx.ngrok-free.app/api/articulos"
+        class="ngrok-input"
+      ></TextField>
+
+      <Button
+        text="Guardar URL de Ngrok"
+        (tap)="guardarUrlNgrok()"
+        class="btn-guardar-ngrok"
+      ></Button>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>

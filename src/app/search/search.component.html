@@ -1,0 +1,45 @@
+<ActionBar class="action-bar">
+  <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+  <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left"></ActionItem>
+  <Label text="Búsqueda API Express"></Label>
+</ActionBar>
+
+<GridLayout rows="auto, auto, *" class="search-page" (navigatedTo)="onNavigatedTo()">
+  <!-- Requisito 2: Formulario de búsqueda (caja de texto + botón) -->
+  <GridLayout row="0" columns="*, auto" class="search-bar-box">
+    <TextField
+      col="0"
+      [(ngModel)]="terminoBusqueda"
+      hint="Filtrar artículos por querystring (?q=)..."
+      class="search-textfield"
+    ></TextField>
+    <Button col="1" text="Buscar" (tap)="ejecutarBusqueda()" class="search-button"></Button>
+  </GridLayout>
+
+  <Label row="1" [text]="'Endpoint Ngrok: ' + urlActiva" class="ngrok-url-label" textWrap="true"></Label>
+
+  <ListView row="2" [items]="resultados" class="list-group">
+    <ng-template let-item="item">
+      <FlexboxLayout flexDirection="row" justifyContent="space-between" alignItems="center" class="articulo-row">
+        <FlexboxLayout flexDirection="column" flexGrow="1" class="articulo-info">
+          <Label [text]="item.titulo" class="articulo-titulo"></Label>
+          <Label [text]="item.categoria + ' • ' + item.autor" class="articulo-categoria"></Label>
+          <Label [text]="item.resumen" textWrap="true" class="articulo-resumen"></Label>
+        </FlexboxLayout>
+
+        <!-- Requisito 7: Ícono interactivo para guardar como favorito -->
+        <FlexboxLayout
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          class="fav-icon-btn"
+          [class.is-fav]="esFavorito(item.id)"
+          (tap)="toggleFavorito(item)"
+        >
+          <Label [text]="esFavorito(item.id) ? '★' : '☆'" class="fav-star"></Label>
+          <Label text="Fav" class="fav-caption"></Label>
+        </FlexboxLayout>
+      </FlexboxLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>

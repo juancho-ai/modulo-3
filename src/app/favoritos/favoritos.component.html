@@ -1,0 +1,34 @@
+<ActionBar class="action-bar">
+  <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+  <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left"></ActionItem>
+  <Label text="Mis Favoritos"></Label>
+</ActionBar>
+
+<GridLayout class="favoritos-page">
+  <ng-container *ngIf="(favoritos$ | async) as listaFavoritos">
+    <Label
+      *ngIf="listaFavoritos.length === 0"
+      text="No tienes artículos favoritos guardados. Marca la estrella (☆) en la pantalla de Búsqueda."
+      textWrap="true"
+      class="empty-favs"
+    ></Label>
+
+    <ListView *ngIf="listaFavoritos.length > 0" [items]="listaFavoritos" class="list-group">
+      <ng-template let-item="item">
+        <GridLayout columns="*, auto" class="fav-card">
+          <StackLayout col="0" class="p-r-10">
+            <Label [text]="item.titulo" class="fav-title"></Label>
+            <Label [text]="item.categoria + ' • ' + item.autor" class="fav-meta"></Label>
+            <Label [text]="item.resumen" textWrap="true" class="fav-summary"></Label>
+          </StackLayout>
+
+          <!-- Requisito 9: Botón "Leer ahora" que despacha Action a Redux -->
+          <StackLayout col="1" verticalAlignment="center">
+            <Button text="Leer ahora" (tap)="onLeerAhoraTap(item)" class="btn-leer-ahora"></Button>
+            <Button text="Eliminar" (tap)="quitarFavorito(item)" class="btn-eliminar-fav"></Button>
+          </StackLayout>
+        </GridLayout>
+      </ng-template>
+    </ListView>
+  </ng-container>
+</GridLayout>

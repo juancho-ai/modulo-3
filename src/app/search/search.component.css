@@ -1,0 +1,85 @@
+.search-page {
+  background-color: #f8fafc;
+}
+
+.search-bar-box {
+  background-color: #1e3a8a;
+  padding: 12;
+}
+
+.search-textfield {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-radius: 8;
+  padding: 10 12;
+  margin-right: 8;
+  font-size: 14;
+}
+
+.search-button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-radius: 8;
+  font-weight: bold;
+  padding: 0 16;
+}
+
+.ngrok-url-label {
+  background-color: #e2e8f0;
+  color: #334155;
+  font-size: 11;
+  padding: 6 12;
+}
+
+.articulo-row {
+  padding: 14;
+  background-color: #ffffff;
+  border-bottom-width: 1;
+  border-bottom-color: #e2e8f0;
+}
+
+.articulo-info {
+  padding-right: 10;
+}
+
+.articulo-titulo {
+  font-size: 15;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.articulo-categoria {
+  font-size: 12;
+  color: #2563eb;
+  margin-top: 2;
+}
+
+.articulo-resumen {
+  font-size: 13;
+  color: #475569;
+  margin-top: 4;
+}
+
+.fav-icon-btn {
+  width: 48;
+  height: 48;
+  border-radius: 24;
+  background-color: #f1f5f9;
+  border-width: 1;
+  border-color: #cbd5e1;
+}
+
+.fav-icon-btn.is-fav {
+  background-color: #fef08a;
+  border-color: #eab308;
+}
+
+.fav-star {
+  font-size: 20;
+  color: #ca8a04;
+}
+
+.fav-caption {
+  font-size: 10;
+  color: #475569;
+}

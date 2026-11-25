@@ -1,0 +1,21 @@
+<ActionBar title="Editar Nombre de Usuario">
+  <NavigationButton text="Atrás" android.systemIcon="ic_menu_back" (tap)="cancelar()"></NavigationButton>
+</ActionBar>
+
+<StackLayout class="p-20">
+  <Label text="Actualizar Nombre de Usuario" class="h2 font-weight-bold m-b-8"></Label>
+  <Label
+    text="Este valor se almacenará localmente mediante ApplicationSettings y persistirá al reiniciar la aplicación:"
+    textWrap="true"
+    class="text-muted m-b-16"
+  ></Label>
+
+  <TextField
+    [(ngModel)]="nombreUsuarioInput"
+    hint="Ingresa tu nombre de usuario"
+    class="input input-border p-12 m-b-16"
+  ></TextField>
+
+  <Button text="Guardar en ApplicationSettings" (tap)="guardarUsuario()" class="-primary m-b-8"></Button>
+  <Button text="Cancelar" (tap)="cancelar()" class="-outline"></Button>
+</StackLayout>

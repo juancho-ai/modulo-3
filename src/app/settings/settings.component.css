@@ -1,0 +1,57 @@
+.settings-container {
+  padding: 16;
+  background-color: #f8fafc;
+}
+
+.settings-card {
+  background-color: #ffffff;
+  padding: 16;
+  border-radius: 10;
+  margin-bottom: 16;
+  border-width: 1;
+  border-color: #cbd5e1;
+}
+
+.card-heading {
+  font-size: 16;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 8;
+}
+
+.field-label {
+  font-size: 13;
+  color: #64748b;
+}
+
+.usuario-valor {
+  font-size: 18;
+  font-weight: bold;
+  color: #0f172a;
+  margin-top: 4;
+  margin-bottom: 14;
+}
+
+.btn-editar-usuario {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-radius: 8;
+  font-weight: bold;
+}
+
+.ngrok-input {
+  border-width: 1;
+  border-color: #94a3b8;
+  border-radius: 8;
+  padding: 10;
+  margin-top: 8;
+  margin-bottom: 12;
+  font-size: 13;
+}
+
+.btn-guardar-ngrok {
+  background-color: #0f766e;
+  color: #ffffff;
+  border-radius: 8;
+  font-weight: bold;
+}

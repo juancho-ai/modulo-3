@@ -1,0 +1,40 @@
+<ActionBar class="action-bar">
+  <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+  <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left"></ActionItem>
+  <Label text="Inicio • Cola Leer Ahora"></Label>
+</ActionBar>
+
+<GridLayout rows="auto, *" class="home-container" (navigatedTo)="onNavigatedTo()">
+  <StackLayout row="0" class="welcome-card">
+    <Label [text]="'Bienvenido, ' + nombreUsuario" class="welcome-title"></Label>
+    <Label
+      text="Artículos marcados con 'Leer ahora' desde Favoritos (actualización reactiva vía Redux Store.select):"
+      textWrap="true"
+      class="welcome-subtitle"
+    ></Label>
+  </StackLayout>
+
+  <StackLayout row="1">
+    <ng-container *ngIf="(listaLeerAhora$ | async) as lecturas">
+      <Label
+        *ngIf="lecturas.length === 0"
+        text="Aún no hay elementos en 'Leer ahora'. Ve a Búsqueda -> marca Favoritos -> entra a Favoritos y pulsa 'Leer ahora'."
+        textWrap="true"
+        class="empty-message"
+      ></Label>
+
+      <ListView *ngIf="lecturas.length > 0" [items]="lecturas" class="list-group">
+        <ng-template let-item="item">
+          <GridLayout columns="*, auto" class="redux-item-card">
+            <StackLayout col="0">
+              <Label [text]="item.titulo" class="item-title"></Label>
+              <Label [text]="item.categoria + ' • Autor: ' + item.autor" class="item-meta"></Label>
+              <Label [text]="item.resumen" textWrap="true" class="item-summary"></Label>
+            </StackLayout>
+            <Button col="1" text="Quitar" (tap)="quitarLectura(item.id)" class="btn-quitar"></Button>
+          </GridLayout>
+        </ng-template>
+      </ListView>
+    </ng-container>
+  </StackLayout>
+</GridLayout>
